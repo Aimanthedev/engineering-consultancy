@@ -10,12 +10,108 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActivityRouteImport } from './routes/activity'
+import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as ClientsRouteImport } from './routes/clients'
+import { Route as CommercialRouteImport } from './routes/commercial'
+import { Route as DeliverablesRouteImport } from './routes/deliverables'
+import { Route as DesignStudioRouteImport } from './routes/design-studio'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as DrawingsRouteImport } from './routes/drawings'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SiteRouteImport } from './routes/site'
+import { Route as SurveysRouteImport } from './routes/surveys'
+import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsIdRouteImport } from './routes/projects.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApprovalsRoute = ApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientsRoute = ClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialRoute = CommercialRouteImport.update({
+  id: '/commercial',
+  path: '/commercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeliverablesRoute = DeliverablesRouteImport.update({
+  id: '/deliverables',
+  path: '/deliverables',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignStudioRoute = DesignStudioRouteImport.update({
+  id: '/design-studio',
+  path: '/design-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DrawingsRoute = DrawingsRouteImport.update({
+  id: '/drawings',
+  path: '/drawings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteRoute = SiteRouteImport.update({
+  id: '/site',
+  path: '/site',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SurveysRoute = SurveysRouteImport.update({
+  id: '/surveys',
+  path: '/surveys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasksRoute = TasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
@@ -31,30 +127,152 @@ const ProjectsIdRoute = ProjectsIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/approvals': typeof ApprovalsRoute
+  '/calendar': typeof CalendarRoute
+  '/clients': typeof ClientsRoute
+  '/commercial': typeof CommercialRoute
+  '/deliverables': typeof DeliverablesRoute
+  '/design-studio': typeof DesignStudioRoute
+  '/documents': typeof DocumentsRoute
+  '/drawings': typeof DrawingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/site': typeof SiteRoute
+  '/surveys': typeof SurveysRoute
+  '/tasks': typeof TasksRoute
+  '/team': typeof TeamRoute
   '/projects/$id': typeof ProjectsIdRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/approvals': typeof ApprovalsRoute
+  '/calendar': typeof CalendarRoute
+  '/clients': typeof ClientsRoute
+  '/commercial': typeof CommercialRoute
+  '/deliverables': typeof DeliverablesRoute
+  '/design-studio': typeof DesignStudioRoute
+  '/documents': typeof DocumentsRoute
+  '/drawings': typeof DrawingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/site': typeof SiteRoute
+  '/surveys': typeof SurveysRoute
+  '/tasks': typeof TasksRoute
+  '/team': typeof TeamRoute
   '/projects/$id': typeof ProjectsIdRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/approvals': typeof ApprovalsRoute
+  '/calendar': typeof CalendarRoute
+  '/clients': typeof ClientsRoute
+  '/commercial': typeof CommercialRoute
+  '/deliverables': typeof DeliverablesRoute
+  '/design-studio': typeof DesignStudioRoute
+  '/documents': typeof DocumentsRoute
+  '/drawings': typeof DrawingsRoute
+  '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/site': typeof SiteRoute
+  '/surveys': typeof SurveysRoute
+  '/tasks': typeof TasksRoute
+  '/team': typeof TeamRoute
   '/projects/$id': typeof ProjectsIdRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects/$id' | '/projects/'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/approvals'
+    | '/calendar'
+    | '/clients'
+    | '/commercial'
+    | '/deliverables'
+    | '/design-studio'
+    | '/documents'
+    | '/drawings'
+    | '/notifications'
+    | '/reports'
+    | '/settings'
+    | '/site'
+    | '/surveys'
+    | '/tasks'
+    | '/team'
+    | '/projects/$id'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects/$id' | '/projects'
-  id: '__root__' | '/' | '/projects/$id' | '/projects/'
+  to:
+    | '/'
+    | '/activity'
+    | '/approvals'
+    | '/calendar'
+    | '/clients'
+    | '/commercial'
+    | '/deliverables'
+    | '/design-studio'
+    | '/documents'
+    | '/drawings'
+    | '/notifications'
+    | '/reports'
+    | '/settings'
+    | '/site'
+    | '/surveys'
+    | '/tasks'
+    | '/team'
+    | '/projects/$id'
+    | '/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity'
+    | '/approvals'
+    | '/calendar'
+    | '/clients'
+    | '/commercial'
+    | '/deliverables'
+    | '/design-studio'
+    | '/documents'
+    | '/drawings'
+    | '/notifications'
+    | '/reports'
+    | '/settings'
+    | '/site'
+    | '/surveys'
+    | '/tasks'
+    | '/team'
+    | '/projects/$id'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
+  ApprovalsRoute: typeof ApprovalsRoute
+  CalendarRoute: typeof CalendarRoute
+  ClientsRoute: typeof ClientsRoute
+  CommercialRoute: typeof CommercialRoute
+  DeliverablesRoute: typeof DeliverablesRoute
+  DesignStudioRoute: typeof DesignStudioRoute
+  DocumentsRoute: typeof DocumentsRoute
+  DrawingsRoute: typeof DrawingsRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  SiteRoute: typeof SiteRoute
+  SurveysRoute: typeof SurveysRoute
+  TasksRoute: typeof TasksRoute
+  TeamRoute: typeof TeamRoute
   ProjectsIdRoute: typeof ProjectsIdRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
@@ -66,6 +284,118 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/approvals': {
+      id: '/approvals'
+      path: '/approvals'
+      fullPath: '/approvals'
+      preLoaderRoute: typeof ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clients': {
+      id: '/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof ClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial': {
+      id: '/commercial'
+      path: '/commercial'
+      fullPath: '/commercial'
+      preLoaderRoute: typeof CommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deliverables': {
+      id: '/deliverables'
+      path: '/deliverables'
+      fullPath: '/deliverables'
+      preLoaderRoute: typeof DeliverablesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design-studio': {
+      id: '/design-studio'
+      path: '/design-studio'
+      fullPath: '/design-studio'
+      preLoaderRoute: typeof DesignStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drawings': {
+      id: '/drawings'
+      path: '/drawings'
+      fullPath: '/drawings'
+      preLoaderRoute: typeof DrawingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site': {
+      id: '/site'
+      path: '/site'
+      fullPath: '/site'
+      preLoaderRoute: typeof SiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/surveys': {
+      id: '/surveys'
+      path: '/surveys'
+      fullPath: '/surveys'
+      preLoaderRoute: typeof SurveysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasks': {
+      id: '/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/': {
@@ -87,6 +417,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
+  ApprovalsRoute: ApprovalsRoute,
+  CalendarRoute: CalendarRoute,
+  ClientsRoute: ClientsRoute,
+  CommercialRoute: CommercialRoute,
+  DeliverablesRoute: DeliverablesRoute,
+  DesignStudioRoute: DesignStudioRoute,
+  DocumentsRoute: DocumentsRoute,
+  DrawingsRoute: DrawingsRoute,
+  NotificationsRoute: NotificationsRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  SiteRoute: SiteRoute,
+  SurveysRoute: SurveysRoute,
+  TasksRoute: TasksRoute,
+  TeamRoute: TeamRoute,
   ProjectsIdRoute: ProjectsIdRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
