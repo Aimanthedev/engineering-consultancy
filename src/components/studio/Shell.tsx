@@ -6,6 +6,7 @@ import {
   PanelLeftClose, PanelLeftOpen, Menu, X, Command as CmdIcon, Hexagon,
 } from "lucide-react";
 import { toast } from "sonner";
+import { hasSession, endSession } from "@/lib/demo-auth";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
