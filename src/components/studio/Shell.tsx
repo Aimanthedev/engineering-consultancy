@@ -3,9 +3,10 @@ import { useEffect, useState, type ReactNode } from "react";
 import {
   LayoutDashboard, FolderKanban, PenTool, CheckSquare, CalendarDays, PackageCheck, Ruler, BadgeCheck, FileText,
   HardHat, Compass, Building2, Users, Wallet, BarChart3, Bell, Activity, Settings, Search, Plus, Sun, Moon,
-  PanelLeftClose, PanelLeftOpen, Menu, X, Command as CmdIcon, Hexagon,
+  PanelLeftClose, PanelLeftOpen, Menu, X, Command as CmdIcon, Hexagon, LogOut,
 } from "lucide-react";
 import { toast } from "sonner";
+import { hasSession, endSession } from "@/lib/demo-auth";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
@@ -116,6 +117,11 @@ export function Shell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const current = ALL.find((i) => (i.to === "/" ? path === "/" : path.startsWith(i.to)));
+  const isLogin = path === "/login";
+
+  useEffect(() => {
+    if (!isLogin && !hasSession()) navigate({ to: "/login", replace: true });
+  }, [isLogin, navigate]);
 
   useEffect(() => {
     const saved = localStorage.getItem("sc-theme");
@@ -134,6 +140,9 @@ export function Shell({ children }: { children: ReactNode }) {
   }, []);
 
   const go = (to: string, params?: Record<string, string>) => { setCmd(false); navigate({ to, params } as never); };
+  const logout = () => { endSession(); navigate({ to: "/login", replace: true }); };
+
+  if (isLogin) return <>{children}</>;
 
   return (
     <div className="flex min-h-screen w-full bg-background">
@@ -143,6 +152,11 @@ export function Shell({ children }: { children: ReactNode }) {
         <div className={cn("flex items-center gap-3 border-t border-sidebar-border p-4", collapsed && "justify-center")}>
           <Avatar id="p2" size="md" />
           {!collapsed && <div className="min-w-0 leading-tight"><div className="truncate text-sm font-semibold">Omar Haddad</div><div className="truncate text-[11px] text-muted-foreground">Design Director</div></div>}
+          {!collapsed && (
+            <button onClick={logout} title="Log out" aria-label="Log out" className="ml-auto rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+              <LogOut className="size-4" />
+            </button>
+          )}
         </div>
       </aside>
 

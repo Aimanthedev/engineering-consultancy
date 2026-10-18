@@ -19,6 +19,7 @@ import { Route as DeliverablesRouteImport } from './routes/deliverables'
 import { Route as DesignStudioRouteImport } from './routes/design-studio'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DrawingsRouteImport } from './routes/drawings'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as SettingsRouteImport } from './routes/settings'
@@ -79,6 +80,11 @@ const DrawingsRoute = DrawingsRouteImport.update({
   path: '/drawings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/design-studio': typeof DesignStudioRoute
   '/documents': typeof DocumentsRoute
   '/drawings': typeof DrawingsRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/design-studio': typeof DesignStudioRoute
   '/documents': typeof DocumentsRoute
   '/drawings': typeof DrawingsRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
@@ -179,6 +187,7 @@ export interface FileRoutesById {
   '/design-studio': typeof DesignStudioRoute
   '/documents': typeof DocumentsRoute
   '/drawings': typeof DrawingsRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/design-studio'
     | '/documents'
     | '/drawings'
+    | '/login'
     | '/notifications'
     | '/reports'
     | '/settings'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/design-studio'
     | '/documents'
     | '/drawings'
+    | '/login'
     | '/notifications'
     | '/reports'
     | '/settings'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/design-studio'
     | '/documents'
     | '/drawings'
+    | '/login'
     | '/notifications'
     | '/reports'
     | '/settings'
@@ -266,6 +278,7 @@ export interface RootRouteChildren {
   DesignStudioRoute: typeof DesignStudioRoute
   DocumentsRoute: typeof DocumentsRoute
   DrawingsRoute: typeof DrawingsRoute
+  LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
@@ -349,6 +362,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DrawingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -426,6 +446,7 @@ const rootRouteChildren: RootRouteChildren = {
   DesignStudioRoute: DesignStudioRoute,
   DocumentsRoute: DocumentsRoute,
   DrawingsRoute: DrawingsRoute,
+  LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
