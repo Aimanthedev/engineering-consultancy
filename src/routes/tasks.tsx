@@ -13,7 +13,7 @@ const COLS: Task["status"][] = ["To Do", "In Progress", "Review", "Done"];
 
 function Tasks() {
   const [tasks, setTasks] = useState(TASKS);
-  const advance = (id: string) => setTasks((s) => s.map((t) => (t.id === id ? { ...t, status: COLS[Math.min(3, COLS.indexOf(t.status) + 1)] } : t)));
+  const advance = (id: string) => setTasks((s) => s.map((t) => (t.id === id ? { ...t, status: COLS[Math.min(3, COLS.indexOf(t.status) + 1)]! } : t)));
   return (
     <div className="mx-auto max-w-[1600px]">
       <PageHeader eyebrow="Main" title="Tasks" sub={`${tasks.filter((t) => t.status !== "Done").length} open · click → to advance`} />

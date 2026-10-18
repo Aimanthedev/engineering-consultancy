@@ -32,7 +32,7 @@ function Team() {
         </table></div>
       </Panel>
       <Panel className="mt-4" title="Discipline capacity">
-        <div className="grid gap-4 md:grid-cols-3">{DISCIPLINES.map((d, i) => { const v = [94, 81, 84, 116, 46, 81][i]; return (
+        <div className="grid gap-4 md:grid-cols-3">{DISCIPLINES.map((d, i) => { const v = [94, 81, 84, 116, 46, 81][i]!; return (
           <div key={d}><div className="flex justify-between text-sm"><span className="font-medium">{d}</span><b className={v > 100 ? "text-bad" : ""}>{v}%</b></div><Bar className="mt-1.5 h-2" value={v} tone={v > 100 ? "bad" : v > 90 ? "warn" : "ok"} /></div>
         ); })}</div>
       </Panel>

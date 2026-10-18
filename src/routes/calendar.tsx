@@ -31,7 +31,7 @@ function Cal() {
                 {valid && <>
                   <div className={cn("mb-1 grid size-6 place-items-center rounded-full text-xs font-semibold", day === 13 && "bg-primary text-primary-foreground")}>{day}</div>
                   <div className="space-y-0.5">{(ev[day] ?? []).slice(0, 3).map((e, j) => <div key={j} className={cn("truncate rounded px-1 py-0.5 text-[10px] font-medium", e.c)}>{e.t}</div>)}
-                    {(ev[day]?.length ?? 0) > 3 && <div className="text-[10px] text-muted-foreground">+{ev[day].length - 3} more</div>}</div>
+                    {(ev[day]?.length ?? 0) > 3 && <div className="text-[10px] text-muted-foreground">+{ev[day]!.length - 3} more</div>}</div>
                 </>}
               </div>
             );
