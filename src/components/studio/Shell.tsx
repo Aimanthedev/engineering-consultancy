@@ -117,6 +117,11 @@ export function Shell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const current = ALL.find((i) => (i.to === "/" ? path === "/" : path.startsWith(i.to)));
+  const isLogin = path === "/login";
+
+  useEffect(() => {
+    if (!isLogin && !hasSession()) navigate({ to: "/login", replace: true });
+  }, [isLogin, navigate]);
 
   useEffect(() => {
     const saved = localStorage.getItem("sc-theme");
