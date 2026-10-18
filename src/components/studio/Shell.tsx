@@ -140,6 +140,9 @@ export function Shell({ children }: { children: ReactNode }) {
   }, []);
 
   const go = (to: string, params?: Record<string, string>) => { setCmd(false); navigate({ to, params } as never); };
+  const logout = () => { endSession(); navigate({ to: "/login", replace: true }); };
+
+  if (isLogin) return <>{children}</>;
 
   return (
     <div className="flex min-h-screen w-full bg-background">
