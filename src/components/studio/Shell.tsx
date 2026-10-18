@@ -184,7 +184,7 @@ export function Shell({ children }: { children: ReactNode }) {
 
       {/* Mobile bottom bar */}
       <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t bg-background/90 backdrop-blur-xl lg:hidden">
-        {[ALL[0], ALL[1], { to: "#create", label: "Create", icon: Plus } as Item, ALL[7], ALL[9]].map((it) =>
+        {([ALL[0], ALL[1], { to: "#create", label: "Create", icon: Plus }, ALL[7], ALL[9]] as Item[]).map((it) =>
           it.to === "#create" ? (
             <button key="c" onClick={() => setCreate(true)} className="flex flex-col items-center py-2"><span className="grid size-10 -translate-y-3 place-items-center rounded-full bg-primary text-primary-foreground glow-primary"><Plus className="size-5" /></span></button>
           ) : (

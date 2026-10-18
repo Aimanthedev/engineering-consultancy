@@ -71,8 +71,8 @@ const leads: Record<Discipline, string> = { Architecture: "p3", Interior: "p5", 
 export const PACKAGES: Package[] = PROJECTS.flatMap((p, i) =>
   (Object.entries(p.packages) as [Discipline, number][]).map(([d, prog], j) => ({
     id: `pkg-${i}-${j}`, project: p.id, discipline: d, name: `${d} — ${p.stage} Design`, stage: p.stage, progress: prog,
-    lead: d === "Interior" && i % 2 ? "p14" : leads[d], status: prog >= 95 ? "Approved" : pkgStatuses[(i + j * 3) % pkgStatuses.length],
-    due: `${10 + ((i * 3 + j * 5) % 20)} Oct`, rev: ["P01", "P02", "P03", "C01", "C02", "T01"][(i + j) % 6], drawings: 8 + ((i * 7 + j * 11) % 60),
+    lead: d === "Interior" && i % 2 ? "p14" : leads[d], status: prog >= 95 ? "Approved" : pkgStatuses[(i + j * 3) % pkgStatuses.length]!,
+    due: `${10 + ((i * 3 + j * 5) % 20)} Oct`, rev: ["P01", "P02", "P03", "C01", "C02", "T01"][(i + j) % 6]!, drawings: 8 + ((i * 7 + j * 11) % 60),
   })),
 );
 
@@ -91,8 +91,8 @@ export const DRAWINGS: Drawing[] = PROJECTS.slice(0, 10).flatMap((p, i) =>
   (Object.keys(p.packages) as Discipline[]).flatMap((d, j) =>
     drawTitles[d].map((t, k) => ({
       no: `${p.code.slice(-3)}-${pre[d]}-${String(100 + k * 10 + j).padStart(4, "0")}`, title: t, project: p.id, discipline: d,
-      rev: ["P01", "P02", "P03", "C01", "C02", "T01"][(i + k) % 6], status: dStat[(i + j + k) % dStat.length],
-      date: `${1 + ((i + k * 3) % 28)} Oct 2026`, by: leads[d], scale: ["1:50", "1:100", "1:20", "1:200", "NTS"][(k + j) % 5],
+      rev: ["P01", "P02", "P03", "C01", "C02", "T01"][(i + k) % 6]!, status: dStat[(i + j + k) % dStat.length]!,
+      date: `${1 + ((i + k * 3) % 28)} Oct 2026`, by: leads[d], scale: ["1:50", "1:100", "1:20", "1:200", "NTS"][(k + j) % 5]!,
     })),
   ),
 );
@@ -131,7 +131,7 @@ export const TASKS: Task[] = [
   ["Slab reinforcement L1 check", "prj-3", "p4", "21 Oct", "High", "To Do", "Structural"],
   ["Medical gas schematic markup", "prj-3", "p6", "22 Oct", "Critical", "In Progress", "MEP"],
   ["Hotel lobby material sample review", "prj-7", "p14", "15 Oct", "High", "Review", "Interior"],
-].map((t, i) => ({ id: `T-${1200 + i}`, title: t[0], project: t[1], assignee: t[2], due: t[3], priority: t[4] as Task["priority"], status: t[5] as Task["status"], discipline: t[6] as Discipline }));
+].map((t, i) => ({ id: `T-${1200 + i}`, title: t[0]!, project: t[1]!, assignee: t[2]!, due: t[3]!, priority: t[4] as Task["priority"], status: t[5] as Task["status"], discipline: t[6] as Discipline }));
 
 export type SiteVisit = { id: string; project: string; date: string; engineer: string; type: string; weather: string; progress: number; observations: number; status: "Scheduled" | "Report Draft" | "Issued" };
 export const VISITS: SiteVisit[] = [
@@ -170,7 +170,7 @@ export const SURVEYS: Survey[] = [
 export const CLIENTS = Array.from(new Set(PROJECTS.map((p) => p.client))).map((c, i) => {
   const ps = PROJECTS.filter((p) => p.client === c);
   return {
-    name: c, sector: ps[0].type.split(" ")[0], contact: ["Mr. Rashid Al-Kuwari", "Ms. Noura Al-Sulaiti", "Eng. Tariq Mahmoud", "Mr. Hassan Al-Emadi", "Ms. Dana Faraj"][i % 5],
+    name: c, sector: ps[0]!.type.split(" ")[0], contact: ["Mr. Rashid Al-Kuwari", "Ms. Noura Al-Sulaiti", "Eng. Tariq Mahmoud", "Mr. Hassan Al-Emadi", "Ms. Dana Faraj"][i % 5]!,
     projects: ps.length, value: ps.reduce((a, p) => a + p.fee, 0), pending: APPROVALS.filter((a) => ps.some((p) => p.id === a.project) && a.status === "Pending").length,
     satisfaction: 72 + ((i * 7) % 26),
   };
